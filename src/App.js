@@ -12,8 +12,8 @@ class App extends Component {
   componentDidMount(){
     this.wavesurfer = window.WaveSurfer.create({
       container: '#waveform',
-      waveColor: 'violet',
-      progressColor: 'purple',
+      waveColor: '#666',
+      progressColor: '#ea5300',
       scrollParent: false,
       minPxPerSec: 200,
       height: 300,
