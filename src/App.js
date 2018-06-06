@@ -18,9 +18,10 @@ class App extends Component {
       minPxPerSec: 200,
       height: 300,
 //      normalize: true,
-      barHeight: .3
+      barHeight: .3,
+      barWidth: 2
     });
-    this.wavesurfer.load('/audio1.mp3');
+    this.wavesurfer.load('/assets/audio1.mp3');
   }
   play = () => {
     this.wavesurfer.playPause();
