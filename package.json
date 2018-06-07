@@ -44,6 +44,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "babel-plugin-react-html-attrs": "^2.1.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.3"
   },
@@ -89,6 +90,9 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "react-html-attrs"
     ]
   },
   "eslintConfig": {

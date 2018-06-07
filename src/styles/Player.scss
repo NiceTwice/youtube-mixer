@@ -1,0 +1,23 @@
+.player {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  .player_progress {
+    position: relative;
+    &:hover {
+      .player_progress_mouse {
+        display: block;
+      }
+    }
+    .player_progress_mouse {
+      position: absolute;
+      display: none;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 1;
+      background-color: #222222;
+      opacity: .3;
+    }
+  }
+}
