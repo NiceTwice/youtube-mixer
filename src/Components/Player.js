@@ -20,7 +20,7 @@ class Player extends Component {
       barHeight: .8,
       barWidth: 2
     });
-    this.wavesurfer.load('/assets/audio1.mp3');
+    this.wavesurfer.load(process.env.PUBLIC_URL + '/assets/audio1.mp3');
   }
   play = () => {
     this.wavesurfer.playPause();
