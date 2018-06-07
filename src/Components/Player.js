@@ -25,14 +25,14 @@ class Player extends Component {
   play = () => {
     this.wavesurfer.playPause();
   };
-  onMouseMove = (e) => {
+  onProgressMouseMove = (e) => {
     const bounds = e.target.getBoundingClientRect();
     this.setState({progressHoverX: e.clientX - bounds.left});
   };
   render(){
     return (
         <div class="player">
-          <div class="player_progress" onMouseMove={this.onMouseMove}>
+          <div class="player_progress" onMouseMove={this.onProgressMouseMove}>
             <div id="waveform" style={{width:'100%', height:'100px'}}/>
             <div class="player_progress_mouse" style={{width: this.state.progressHoverX}}/>
           </div>
