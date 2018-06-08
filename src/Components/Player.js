@@ -5,7 +5,9 @@ class Player extends Component {
     super(props);
     this.state = {
       progressHover: false,
-      progressHoverX: 0
+      progressHoverX: 0,
+      currentTime: null,
+      totalDuration: null
     }
   }
   componentDidMount(){
@@ -19,6 +21,19 @@ class Player extends Component {
 //      normalize: true,
       barHeight: .8,
       barWidth: 2
+    });
+    this.wavesurfer.on('ready', () => {
+      const duration = this.wavesurfer.getDuration();
+      const currentTime = this.wavesurfer.getCurrentTime();
+      this.setState({currentTime: currentTime, totalDuration: duration});
+    });
+    this.wavesurfer.on('audioprocess', () => {
+      const currentTime = this.wavesurfer.getCurrentTime();
+      this.setState({currentTime: currentTime});
+    });
+    this.wavesurfer.on('seek', (progress)=>{
+      const currentTime = this.wavesurfer.getCurrentTime();
+      this.setState({currentTime: currentTime});
     });
     this.wavesurfer.load(process.env.PUBLIC_URL + '/assets/audio1.mp3');
   }
@@ -35,6 +50,12 @@ class Player extends Component {
           <div class="player_progress" onMouseMove={this.onProgressMouseMove}>
             <div id="waveform" style={{width:'100%', height:'100px'}}/>
             <div class="player_progress_mouse" style={{width: this.state.progressHoverX}}/>
+          </div>
+          <div class="player_song_info">
+            {this.state.currentTime !== null &&
+            <span>{this.state.currentTime}</span>}
+            {this.state.totalDuration!== null &&
+            <span style={{float: 'right'}}>{this.state.totalDuration}</span>}
           </div>
           <button onClick={this.play}>play</button>
         </div>

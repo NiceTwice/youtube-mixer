@@ -2,6 +2,10 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  .player_song_info {
+    display: flex;
+    position: relative;
+  }
   .player_progress {
     position: relative;
     &:hover {
