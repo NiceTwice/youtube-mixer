@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from "react";
+import {secToMin} from "../utils";
 
 class Player extends Component {
   constructor(props){
@@ -53,9 +54,9 @@ class Player extends Component {
           </div>
           <div class="player_song_info">
             {this.state.currentTime !== null &&
-            <span>{this.state.currentTime}</span>}
+            <span>{secToMin(this.state.currentTime)}</span>}
             {this.state.totalDuration!== null &&
-            <span style={{float: 'right'}}>{this.state.totalDuration}</span>}
+            <span style={{float: 'right'}}>{secToMin(this.state.totalDuration)}</span>}
           </div>
           <button onClick={this.play}>play</button>
         </div>
