@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from "react";
-import {secToMin} from "../utils";
+import {secToMin} from 'utils';
 
 class Player extends Component {
   constructor(props){
