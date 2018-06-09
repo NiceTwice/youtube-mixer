@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Player from "./Components/Player";
+import Player from "./components/Player";
 
 class App extends Component {
   constructor(props){

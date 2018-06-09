@@ -1,5 +1,6 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {secToMin, inputOnChange} from 'utils';
+import {connect} from "react-redux";
 
 class Player extends Component {
   constructor(props){
@@ -84,4 +85,4 @@ class Player extends Component {
   }
 }
 
-export default Player;
+export default connect(store => ({tmp: store.common.tmp}))(Player);
