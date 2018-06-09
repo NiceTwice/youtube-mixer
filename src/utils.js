@@ -4,3 +4,7 @@ export const secToMin = (secs) => {
 
   return `${min}:${sec < 10 ? `0${sec}` : sec}`;
 };
+
+export const inputOnChange  = (e) => {
+  this.setState({[e.target.name]: e.target.value});
+};

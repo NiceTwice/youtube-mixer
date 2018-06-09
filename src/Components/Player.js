@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from "react";
-import {secToMin} from 'utils';
+import {secToMin, inputOnChange} from 'utils';
 
 class Player extends Component {
   constructor(props){
@@ -8,9 +8,15 @@ class Player extends Component {
       progressHover: false,
       progressHoverX: 0,
       currentTime: null,
-      totalDuration: null
+      totalDuration: null,
+      volume: 0
     }
   }
+  onChange = inputOnChange.bind(this);
+  volumeChange = (e) => {
+    this.wavesurfer.setVolume(e.target.value);
+    this.setState({volume: e.target.value});
+  };
   componentDidMount(){
     this.wavesurfer = window.WaveSurfer.create({
       container: '#waveform',
@@ -26,7 +32,13 @@ class Player extends Component {
     this.wavesurfer.on('ready', () => {
       const duration = this.wavesurfer.getDuration();
       const currentTime = this.wavesurfer.getCurrentTime();
-      this.setState({currentTime: currentTime, totalDuration: duration});
+      const volume = this.wavesurfer.getVolume();
+      console.log(volume);
+      this.setState({
+        currentTime: currentTime,
+        totalDuration: duration,
+        volume: volume
+      });
     });
     this.wavesurfer.on('audioprocess', () => {
       const currentTime = this.wavesurfer.getCurrentTime();
@@ -57,6 +69,14 @@ class Player extends Component {
             <span>{secToMin(this.state.currentTime)}</span>}
             {this.state.totalDuration!== null &&
             <span style={{float: 'right'}}>{secToMin(this.state.totalDuration)}</span>}
+          </div>
+          <div>
+            <input type="range"
+                   value={this.state.volume}
+                   min="0"
+                   max="1"
+                   step="0.01"
+                   onChange={this.volumeChange}/>
           </div>
           <button onClick={this.play}>play</button>
         </div>
