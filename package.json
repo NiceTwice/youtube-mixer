@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "babel-plugin-react-html-attrs": "^2.1.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "gh-pages": "^1.2.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.3"
@@ -102,7 +103,8 @@
       "react-app"
     ],
     "plugins": [
-      "react-html-attrs"
+      "react-html-attrs",
+      "transform-decorators-legacy"
     ]
   },
   "eslintConfig": {

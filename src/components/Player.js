@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {secToMin, inputOnChange} from 'utils';
 import {connect} from "react-redux";
 
+@connect()
 class Player extends Component {
   constructor(props){
     super(props);
@@ -34,7 +35,6 @@ class Player extends Component {
       const duration = this.wavesurfer.getDuration();
       const currentTime = this.wavesurfer.getCurrentTime();
       const volume = this.wavesurfer.getVolume();
-      console.log(volume);
       this.setState({
         currentTime: currentTime,
         totalDuration: duration,
@@ -85,4 +85,4 @@ class Player extends Component {
   }
 }
 
-export default connect(store => ({tmp: store.common.tmp}))(Player);
+export default Player;

@@ -1,8 +1,8 @@
-export const firstAction = () => {
+export const firstAction = (nb) => {
   return {
     type: 'SET_TMP',
     payload: {
-      tmp: 42
+      tmp: nb
     }
   }
 };
