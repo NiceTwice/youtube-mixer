@@ -8,3 +8,7 @@ export const secToMin = (secs) => {
 export const inputOnChange  = (e) => {
   this.setState({[e.target.name]: e.target.value});
 };
+
+export const resolvePath = (path) => {
+  return process.env.PUBLIC_URL + path;
+};

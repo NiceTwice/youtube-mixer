@@ -35,6 +35,11 @@ class Player extends Component {
       const duration = this.wavesurfer.getDuration();
       const currentTime = this.wavesurfer.getCurrentTime();
       const volume = this.wavesurfer.getVolume();
+      const minimap = Object.create(this.wavesurfer.Minimap);
+      minimap.init({
+        Spectrum: this.wavesurfer,
+        container: "#wave-minimap"
+      });
       this.setState({
         currentTime: currentTime,
         totalDuration: duration,
@@ -63,6 +68,7 @@ class Player extends Component {
         <div class="player">
           <div class="player_progress" onMouseMove={this.onProgressMouseMove}>
             <div id="waveform" style={{width:'100%', height:'100px'}}/>
+            <div id="waveform-minimap" style={{width: '100%'}}/>
             <div class="player_progress_mouse" style={{width: this.state.progressHoverX}}/>
           </div>
           <div class="player_song_info">
