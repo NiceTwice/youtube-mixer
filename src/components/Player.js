@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, {Component, PureComponent} from "react";
 import {secToMin, inputOnChange} from 'utils';
 import {connect} from "react-redux";
 
 @connect()
-class Player extends Component {
+class Player extends PureComponent {
   constructor(props){
     super(props);
     this.state = {
@@ -35,11 +35,6 @@ class Player extends Component {
       const duration = this.wavesurfer.getDuration();
       const currentTime = this.wavesurfer.getCurrentTime();
       const volume = this.wavesurfer.getVolume();
-      const minimap = Object.create(this.wavesurfer.Minimap);
-      minimap.init({
-        Spectrum: this.wavesurfer,
-        container: "#wave-minimap"
-      });
       this.setState({
         currentTime: currentTime,
         totalDuration: duration,
